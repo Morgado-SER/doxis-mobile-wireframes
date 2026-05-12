@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 · Select Workspace — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="tenant">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">Select Workspace</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./05-state-c.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./07-auth-style.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <div class="device">
+    <div class="device-screen">
+      <div class="device-notch"></div>
+
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <a class="nav-back" href="./01-state-a.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <span class="nav-title">Select Workspace</span>
+      </div>
+
+      <!-- Step indicator: step 1 of 4 -->
+      <div class="step-indicator">
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="screen-body">
+
+        <a href="./01-state-a.html" class="url-chip" style="margin-bottom:16px;align-self:flex-start">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span class="url-chip-text">gateway.acme.com</span>
+        </a>
+
+        <div class="headline-md">Select Workspace</div>
+        <div class="subline" style="margin-top:4px;margin-bottom:20px">Available tenants on this gateway.</div>
+
+        <div class="section-label">Tenants</div>
+        <div class="list">
+
+          <a class="list-item" href="./07-auth-style.html">
+            <div class="avatar teal">AC</div>
+            <div class="list-content">
+              <div class="list-title">Acme Corp</div>
+              <div class="list-sub">acme · Production</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+          <a class="list-item" href="./07-auth-style.html">
+            <div class="avatar purple">RD</div>
+            <div class="list-content">
+              <div class="list-title">R&amp;D Division</div>
+              <div class="list-sub">acme-rd · Staging</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+          <a class="list-item" href="./07-auth-style.html">
+            <div class="avatar orange">FN</div>
+            <div class="list-content">
+              <div class="list-title">Finance</div>
+              <div class="list-sub">acme-fin · Production</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+        </div>
+
+      </div>
+      <div class="bottom-safe"></div>
+    </div>
+  </div>
+
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Shared path — step 1 of 4</div>
+      <ul class="notes-list">
+        <li>This screen appears after URL is resolved, regardless of which entry state (A, B, C, or QR URL-only).</li>
+        <li>Step indicator shows progress through the auth flow.</li>
+        <li>URL chip at top is tappable — allows going back to change the server.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Interactions</div>
+      <div class="flow-links">
+        <a href="./07-auth-style.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/></svg>
+          <span class="flow-link-label">Tap tenant → Auth Method</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="./01-state-a.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="flow-link-label">Back → Enter URL (bidirectional)</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Tenant ID and environment (Production/Staging) shown as secondary text — essential for developers with multiple environments.</li>
+        <li>Avatar colours help visually distinguish tenants at a glance.</li>
+        <li>If only one tenant exists, this screen is skipped automatically — no explicit "skip" rule shown here.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 · Signing In… — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="loading">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">Signing In…</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./09-sso.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./11-role.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <div class="device">
+    <div class="device-screen">
+      <div class="device-notch"></div>
+
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <!-- No nav bar — non-interruptible state -->
+
+      <div class="screen-body center" style="gap:20px;">
+
+        <!-- App logo mark -->
+        <div class="app-logo-mark" style="width:56px;height:56px;border-radius:14px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+
+        <div class="spinner"></div>
+
+        <div>
+          <div style="font-size:var(--text-md);font-weight:var(--fw-semibold);color:var(--text-primary);margin-bottom:4px;text-align:center;">Signing you in…</div>
+          <div style="font-size:var(--text-sm);color:var(--text-tertiary);text-align:center;">Verifying credentials with Acme Corp</div>
+        </div>
+
+        <!-- Tenant context chip — always visible during auth -->
+        <div class="url-chip static">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="url-chip-text">Acme Corp · gateway.acme.com</span>
+        </div>
+
+        <!-- Skip rules notice -->
+        <div class="alert info" style="max-width:290px;text-align:left;">
+          <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span class="alert-text">
+            <strong>Auto-skip:</strong> if only one auth method or one role is configured, those steps are bypassed here. A brief loading state prevents an abrupt jump.
+          </span>
+        </div>
+
+        <!-- Simulate-only link for wireframe navigation -->
+        <a class="btn btn-text" href="./11-role.html" style="margin-top:8px;font-size:var(--text-xs);color:var(--text-quaternary)">
+          → Continue (wireframe only)
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Purpose of this screen</div>
+      <ul class="notes-list">
+        <li>Authentication request is in flight — credentials sent to backend, awaiting token response.</li>
+        <li>No back button: this is a non-interruptible state. The process must complete or timeout.</li>
+        <li>Tenant context chip remains visible so users know exactly which account is authenticating.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Auto-skip behaviour</div>
+      <ul class="notes-list">
+        <li>If auth method is singular → this screen follows directly from credentials/SSO, skipping screen 07.</li>
+        <li>If role is singular → this screen proceeds directly to Home (screen 12), skipping screen 11.</li>
+        <li>In both cases, a visible loading state (this screen) prevents an abrupt jump and reassures the user.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Transitions</div>
+      <div class="flow-links">
+        <a href="./11-role.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <span class="flow-link-label">Auth success → Select Role</span>
+          <span class="flow-link-dir">auto</span>
+        </a>
+        <a href="./12-home.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5"/></svg>
+          <span class="flow-link-label">Auth success + 1 role → Home (skip 11)</span>
+          <span class="flow-link-dir">auto</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Nav bar is intentionally absent — auth is non-interruptible once initiated.</li>
+        <li>Spinner uses <code>border-top-color: var(--teal-600)</code> against <code>border-secondary</code> track.</li>
+        <li>Error state (timeout / wrong credentials): navigate back to credentials screen with an inline error — not shown in this frame.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

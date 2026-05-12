@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09 · SSO / IDP Redirect — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="sso">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">SSO / IDP Redirect</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./08-credentials.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./10-loading.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <div class="device">
+    <div class="device-screen">
+      <div class="device-notch"></div>
+
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <a class="nav-back" href="./07-auth-style.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <span class="nav-title">Redirecting to IDP</span>
+      </div>
+
+      <!-- Step indicator: step 3 of 4 -->
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-dot done"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="screen-body center" style="gap:20px;padding-top:0;">
+
+        <!-- IDP icon -->
+        <div style="width:64px;height:64px;border-radius:var(--r-xl);background:var(--bg-brand-primary);display:flex;align-items:center;justify-content:center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--teal-600)" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+
+        <div>
+          <div class="headline-md" style="margin-bottom:6px">Redirecting to your IDP</div>
+          <div class="subline">Opening Microsoft Entra ID in your browser. Complete sign-in there and return to this app.</div>
+        </div>
+
+        <!-- Tenant context chip -->
+        <div class="url-chip static">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="url-chip-text">Acme Corp · Azure AD / Entra ID</span>
+        </div>
+
+        <div class="spinner"></div>
+
+        <div style="font-size:var(--text-xs);color:var(--text-tertiary);max-width:240px;line-height:1.6;text-align:center;">
+          A browser window should have opened. If nothing happened, tap the button below.
+        </div>
+
+        <a class="btn btn-ghost" style="width:auto;padding:0 24px;" href="./10-loading.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open browser window
+        </a>
+
+        <a class="btn btn-text" href="./07-auth-style.html">Cancel</a>
+
+      </div>
+      <div class="bottom-safe"></div>
+    </div>
+  </div>
+
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Shared path — step 3 of 4</div>
+      <ul class="notes-list">
+        <li>App opens the system browser or an in-app browser session for the IDP login page.</li>
+        <li>Spinner indicates the app is waiting for the OAuth callback.</li>
+        <li>Tenant + IDP name visible throughout — user knows exactly where they're authenticating.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Interactions</div>
+      <div class="flow-links">
+        <a href="./10-loading.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5"/></svg>
+          <span class="flow-link-label">Open browser → completes → Loading</span>
+          <span class="flow-link-dir">auto</span>
+        </a>
+        <a href="./07-auth-style.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="flow-link-label">Cancel → Auth Method</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Back button returns to Auth Method — not to tenant selection — preserving form context.</li>
+        <li>Cancel link uses <code>btn-text</code> style — lowest visual weight, clearly secondary.</li>
+        <li>"Open browser window" button handles the case where the browser did not launch automatically (sandboxed environments, permission denied).</li>
+        <li>On successful OAuth callback, this screen transitions automatically to screen 10 — no user action needed.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

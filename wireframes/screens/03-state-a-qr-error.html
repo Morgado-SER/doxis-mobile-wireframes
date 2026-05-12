@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 · State A: QR Error — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="state-a-qr-error">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">State A · QR Error</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./02-state-a-qr.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./04-state-b.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <!-- ── Device ──────────────────────────────────────────────────────── -->
+  <div class="device">
+    <div class="device-screen" style="background:#111">
+      <div class="device-notch"></div>
+
+      <div class="status-bar dark">
+        <span class="status-time light">9:41</span>
+        <div class="status-icons light">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <div class="nav-bar dark">
+        <a class="nav-back dark-style" href="./01-state-a.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <span class="nav-title light">Scan QR Code</span>
+      </div>
+
+      <!-- Viewfinder — error state (red corners, no scan line) -->
+      <div class="qr-viewfinder">
+        <div class="qr-grid"></div>
+        <div class="qr-overlay"></div>
+        <div class="qr-frame">
+          <div class="qr-corner tl error"></div>
+          <div class="qr-corner tr error"></div>
+          <div class="qr-corner bl error"></div>
+          <div class="qr-corner br error"></div>
+          <!-- No scan line when in error state -->
+        </div>
+        <div class="qr-hint-text" style="color:rgba(249,112,102,.8)">QR code not recognised</div>
+      </div>
+
+      <!-- Bottom — error banner + retry/cancel -->
+      <div class="qr-bottom">
+        <div class="qr-error-banner">
+          <svg style="width:16px;height:16px;flex-shrink:0;color:#f97066" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span class="qr-error-text">
+            QR code not recognised. Make sure you're scanning a Doxis gateway code provided by your administrator.
+            <a href="./01-state-a.html" class="qr-error-link"> Enter URL manually →</a>
+          </span>
+        </div>
+        <a class="btn btn-ghost-dark" href="./01-state-a.html">Cancel</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Notes ───────────────────────────────────────────────────────── -->
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Screen purpose</div>
+      <ul class="notes-list">
+        <li>QR code was scanned but is unreadable or points to an invalid / unrecognised gateway.</li>
+        <li>Inline error prevents a dead end — user always has a fallback path.</li>
+        <li>Corners turn red to give an immediate visual signal that something failed.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Escape paths</div>
+      <div class="flow-links">
+        <a href="./01-state-a.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/></svg>
+          <span class="flow-link-label">Enter URL manually → State A</span>
+          <span class="flow-link-dir">link</span>
+        </a>
+        <a href="./01-state-a.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="flow-link-label">Cancel → State A</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Corner colour changes from white → <code>#f97066</code> (error red) — no other UI change needed.</li>
+        <li>Scan line animation is stopped in the error state — scanning has halted.</li>
+        <li>Error banner uses <code>rgba(240,68,56,.15)</code> background with <code>#f97066</code> border — dark-mode friendly.</li>
+        <li>Camera feed is still visible in background — user can re-aim and retry (button not shown here; implemented as auto-retry after dismiss).</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

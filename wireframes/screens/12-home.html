@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 · Home Screen — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="home">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">Home Screen</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./11-role.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn disabled" href="#">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <div class="device">
+    <div class="device-screen" style="background:var(--bg-secondary);">
+      <div class="device-notch"></div>
+
+      <!-- Teal gradient header -->
+      <div class="home-header">
+        <div class="status-bar" style="padding-top:44px;padding-bottom:0;background:transparent;">
+          <span class="status-time" style="color:#fff;">9:41</span>
+          <div class="status-icons" style="color:#fff;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+          </div>
+        </div>
+        <div class="gap-16"></div>
+        <div class="home-header-inner">
+          <div>
+            <div class="home-greeting">Good morning</div>
+            <div class="home-name">John Smith</div>
+            <div class="home-tenant">Acme Corp · Document Manager</div>
+          </div>
+          <div class="home-avatar">JS</div>
+        </div>
+        <div class="gap-16"></div>
+      </div>
+
+      <!-- Scrollable content -->
+      <div class="home-scroll">
+
+        <!-- Sign-in confirmation banner -->
+        <div style="margin:16px 16px 0;padding:14px 16px;background:var(--bg-primary);border-radius:var(--r-xl);border:1px solid var(--border-secondary);display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-xs);">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-brand-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal-600)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size:var(--text-sm);font-weight:var(--fw-semibold);color:var(--text-primary);">You're signed in</div>
+            <div style="font-size:var(--text-xs);color:var(--text-tertiary);">Authenticated via Username &amp; Password</div>
+          </div>
+        </div>
+
+        <!-- Quick actions -->
+        <div style="padding:16px 16px 8px;">
+          <div class="section-label">Quick access</div>
+        </div>
+        <div class="quick-grid">
+          <div class="quick-card">
+            <div class="quick-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="quick-card-label">Documents</div>
+          </div>
+          <div class="quick-card">
+            <div class="quick-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="quick-card-label">Folders</div>
+          </div>
+          <div class="quick-card">
+            <div class="quick-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="quick-card-label">Workflows</div>
+          </div>
+          <div class="quick-card">
+            <div class="quick-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <div class="quick-card-label">Search</div>
+          </div>
+        </div>
+
+        <!-- Recent documents -->
+        <div style="padding:4px 16px 8px;">
+          <div class="section-label">Recent</div>
+        </div>
+        <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;">
+
+          <div class="list-item" style="cursor:default;">
+            <div class="list-icon gray">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">Q4 Financial Report.pdf</div>
+              <div class="list-sub">Modified 2 hours ago</div>
+            </div>
+          </div>
+
+          <div class="list-item" style="cursor:default;">
+            <div class="list-icon gray">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">Onboarding Checklist v3.docx</div>
+              <div class="list-sub">Modified yesterday</div>
+            </div>
+          </div>
+
+          <div class="list-item" style="cursor:default;">
+            <div class="list-icon gray">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">HR Policy 2026.docx</div>
+              <div class="list-sub">Modified 3 days ago</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="gap-32"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">End of auth flow</div>
+      <ul class="notes-list">
+        <li>Destination after completing the full authentication path.</li>
+        <li>Teal gradient header uses <code>var(--gradient-bs)</code> from DESIGN.md §9 — brand surface, BS product.</li>
+        <li>Sign-in confirmation banner auto-dismisses after ~4 seconds in the real implementation.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">What's shown</div>
+      <ul class="notes-list">
+        <li><strong>Header:</strong> greeting, full name, tenant + role — all confirmed identity context.</li>
+        <li><strong>Banner:</strong> auth method used — transparency builds user trust.</li>
+        <li><strong>Quick access:</strong> 4 primary entry points in a 2-col grid.</li>
+        <li><strong>Recent:</strong> last 3 documents the user touched.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Header gradient: <code>linear-gradient(135deg, #075365, #1f7082)</code> — DESIGN.md §2.2.</li>
+        <li>Avatar initials use <code>rgba(255,255,255,.2)</code> background — on-brand, readable.</li>
+        <li>Content area background is <code>--bg-secondary (#fafafa)</code> — slightly dimmer than cards.</li>
+        <li>OCS product variant would swap gradient to <code>var(--gradient-ocs)</code> — no structural change.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Return paths (future scope)</div>
+      <ul class="notes-list">
+        <li>If flow started from account list → return to account list instead of Home.</li>
+        <li>Deep link via QR (URL + account) → same Home destination, faster path.</li>
+        <li>Session expiry → redirect back to State B or C depending on saved account count.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

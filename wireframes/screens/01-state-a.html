@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 · State A: Enter URL — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="state-a">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">State A · Enter URL</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn disabled" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./02-state-a-qr.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <!-- ── Device ──────────────────────────────────────────────────────── -->
+  <div class="device">
+    <div class="device-screen">
+      <div class="device-notch"></div>
+
+      <!-- Status bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="screen-body pt" style="justify-content:center;">
+
+        <div class="app-logo" style="margin-bottom:28px">
+          <div class="app-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="app-logo-name">Doxis<span>mobile</span></span>
+        </div>
+
+        <div class="headline">Connect to Doxis</div>
+        <div class="subline" style="margin-top:6px">Enter your organisation's gateway URL, or scan the QR code provided by your administrator.</div>
+
+        <div class="gap-32"></div>
+
+        <div class="input-group">
+          <label class="input-label">Gateway URL</label>
+          <div class="input-wrap">
+            <input class="input-field has-icon-r focused" type="url"
+              placeholder="https://gateway.acme.com" value="" readonly>
+            <div class="input-icon-r">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+          </div>
+          <span class="input-hint">Provided by your IT administrator</span>
+        </div>
+
+        <div class="gap-16"></div>
+
+        <a class="btn btn-primary" href="./06-tenant.html">
+          Continue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
+        <div class="divider">or</div>
+
+        <a class="btn btn-ghost" href="./02-state-a-qr.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h2v2h-2zm4 0h2m0 4h-4m2-2v4"/></svg>
+          Scan QR Code
+        </a>
+
+      </div>
+      <div class="bottom-safe"></div>
+    </div>
+  </div>
+
+  <!-- ── Notes ───────────────────────────────────────────────────────── -->
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Screen purpose</div>
+      <ul class="notes-list">
+        <li>First launch — no accounts saved. User must provide a gateway URL to proceed.</li>
+        <li>Two paths: manual URL entry (primary) or QR scan (secondary, equal weight).</li>
+        <li>URL field is focused by default — keyboard appears immediately on real device.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Interactions</div>
+      <div class="flow-links">
+        <a href="./06-tenant.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <span class="flow-link-label">Continue → Select Workspace</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="./02-state-a-qr.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span class="flow-link-label">Scan QR Code → QR Scanner</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Input uses <code>focused</code> state — border-brand + focus-ring shadow.</li>
+        <li>Logo mark uses BS teal gradient from DESIGN.md §9.</li>
+        <li>URL validation happens on Continue tap — not inline while typing.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

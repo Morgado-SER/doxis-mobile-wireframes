@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doxis Mobile — Auth Flow Wireframes</title>
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/ui.css">
+  <style>
+    body { background: #e2e4e9; }
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-primary);
+      min-height: 100vh;
+      box-shadow: var(--shadow-2xl);
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Hero -->
+  <div class="index-hero">
+    <div class="index-hero-name">Authentication Flow — Wireframes</div>
+    <div class="index-hero-sub">Doxis Mobile · Enterprise ECM App · 12 screens</div>
+    <div class="index-hero-meta">
+      <div class="index-hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+        390 × 844 px (iPhone 14)
+      </div>
+      <div class="index-hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Based on DESIGN.md tokens
+      </div>
+      <div class="index-hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        Figma ❖ Mobile DS
+      </div>
+      <div class="index-hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Last synced 2026-05-12
+      </div>
+    </div>
+  </div>
+
+  <div class="index-body">
+
+    <!-- ── Entry Point ───────────────────────────────────────────────── -->
+    <div class="index-group-label">Entry Point — 3 account states + QR paths</div>
+    <div class="index-grid">
+
+      <a href="./screens/01-state-a.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">01</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">State A · Enter URL</div>
+          <div class="index-card-desc">First launch. User types gateway URL manually or opens QR scanner. No saved accounts.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+          <span class="index-card-kbd">← → keys</span>
+        </div>
+      </a>
+
+      <a href="./screens/02-state-a-qr.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">02</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen" style="background:#111">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h2v2h-2zm4 0h2m0 4h-4m2-2v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">State A · QR Scanner</div>
+          <div class="index-card-desc">Camera viewfinder. Animated scan line. QR may contain URL only, or URL + account info.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/03-state-a-qr-error.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">03</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen" style="background:#111">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97066" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">State A · QR Error</div>
+          <div class="index-card-desc">Unreadable or invalid QR code. Error corners, inline banner, and manual URL fallback.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/04-state-b.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">04</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">State B · Select Tenant</div>
+          <div class="index-card-desc">All saved accounts share one URL — app opens directly to tenant list. Link chip to change URL.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/05-state-c.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">05</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">State C · Select URL</div>
+          <div class="index-card-desc">Accounts across multiple servers. User picks a server first, then proceeds to tenant selection.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ── Shared Path ───────────────────────────────────────────────── -->
+    <div class="index-group-label">Shared Path — after URL is resolved</div>
+    <div class="index-grid">
+
+      <a href="./screens/06-tenant.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">06</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Select Workspace</div>
+          <div class="index-card-desc">Tenant picker on resolved gateway. Step 1 of 4. Back navigates to URL entry.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/07-auth-style.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">07</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Select Auth Method</div>
+          <div class="index-card-desc">Shown only when tenant has multiple auth methods. Auto-skipped if only one is configured.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+          <span class="annotation-tag skip">Auto-skip</span>
+        </div>
+      </a>
+
+      <a href="./screens/08-credentials.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">08</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen" style="background:rgba(15,18,28,.5);align-items:flex-end">
+              <div style="width:100%;height:70%;background:#fff;border-radius:8px 8px 0 0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Credentials (U+P)</div>
+          <div class="index-card-desc">Username + password in a bottom-sheet modal. Show/hide toggle on password field.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/09-sso.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">09</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">SSO / IDP Redirect</div>
+          <div class="index-card-desc">Redirecting to external identity provider. Browser window explanation with cancel escape.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/10-loading.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">10</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:.4"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Signing In…</div>
+          <div class="index-card-desc">Authentication in progress. Tenant context always visible. Auto-skips steps if only one option.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+      <a href="./screens/11-role.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">11</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Select Role</div>
+          <div class="index-card-desc">User picks a role for the session. Step 4 of 4. Skipped if only one role is assigned.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+          <span class="annotation-tag skip">Auto-skip</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ── Destination ───────────────────────────────────────────────── -->
+    <div class="index-group-label">Destination</div>
+    <div class="index-grid">
+
+      <a href="./screens/12-home.html" class="index-card">
+        <div class="index-card-preview">
+          <div class="index-card-num">12</div>
+          <div class="index-card-mini-device">
+            <div class="index-card-mini-screen" style="flex-direction:column;align-items:stretch;overflow:hidden">
+              <div style="height:38%;background:linear-gradient(135deg,#075365,#1f7082)"></div>
+              <div style="flex:1;background:#fafafa;padding:8px 6px;display:flex;flex-direction:column;gap:4px">
+                <div style="height:6px;background:#e9eaeb;border-radius:3px;width:80%"></div>
+                <div style="height:6px;background:#e9eaeb;border-radius:3px;width:60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-title">Home Screen</div>
+          <div class="index-card-desc">Authenticated landing page. Teal gradient header, sign-in confirmation banner, quick actions.</div>
+        </div>
+        <div class="index-card-footer">
+          <span class="index-card-open">Open screen →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ── Skip rules reference ──────────────────────────────────────── -->
+    <div class="index-group-label">Auto-skip rules</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:40px;">
+      <div class="notes-card">
+        <div class="notes-card-title">Screen skips</div>
+        <ul class="notes-list">
+          <li>Auth method screen skipped if tenant has exactly one method configured</li>
+          <li>Role screen skipped if user has exactly one role assigned</li>
+          <li>QR with account info skips tenant selection, goes directly to auth method</li>
+          <li>State B shown when all saved accounts share a single gateway URL</li>
+          <li>State C shown when saved accounts use multiple different gateway URLs</li>
+        </ul>
+      </div>
+      <div class="notes-card">
+        <div class="notes-card-title">QR paths</div>
+        <ul class="notes-list">
+          <li>QR with URL only → resolves to Select Tenant (screen 06)</li>
+          <li>QR with URL + account → skips tenant, goes to Auth Method (screen 07)</li>
+          <li>QR unreadable → error state (screen 03) with inline fallback</li>
+          <li>Cancel from QR scanner → returns to Enter URL (screen 01)</li>
+        </ul>
+      </div>
+      <div class="notes-card">
+        <div class="notes-card-title">Best practice notes</div>
+        <ul class="notes-list">
+          <li>Step indicator (1–4) on every shared-path screen so user knows where they are</li>
+          <li>Tenant context chip visible on auth, credentials, and loading screens</li>
+          <li>Auto-skip shows brief loading state rather than abrupt jump</li>
+          <li>Destructive CTA uses brand colour, not red — red is for errors only</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

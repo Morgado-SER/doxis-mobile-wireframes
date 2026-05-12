@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 · Select Auth Method — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+</head>
+<body data-screen="auth-style">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">Select Auth Method</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./06-tenant.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn" href="./08-credentials.html">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main">
+
+  <div class="device">
+    <div class="device-screen">
+      <div class="device-notch"></div>
+
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <a class="nav-back" href="./06-tenant.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <span class="nav-title">Sign In</span>
+      </div>
+
+      <!-- Step indicator: step 2 of 4 -->
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="screen-body">
+
+        <!-- Tenant context chip — static, non-tappable -->
+        <div class="url-chip static" style="margin-bottom:16px;align-self:flex-start">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="url-chip-text">Acme Corp · gateway.acme.com</span>
+        </div>
+
+        <div class="headline-md">How would you like to sign in?</div>
+        <div class="subline" style="margin-top:4px;margin-bottom:20px">This workspace has multiple authentication methods available.</div>
+
+        <div class="section-label">Authentication method</div>
+        <div class="list">
+
+          <a class="list-item" href="./08-credentials.html">
+            <div class="list-icon teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">Username &amp; Password</div>
+              <div class="list-sub">Sign in with your Doxis credentials</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+          <a class="list-item" href="./09-sso.html">
+            <div class="list-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">Single Sign-On (SSO)</div>
+              <div class="list-sub">Continue with your company identity provider</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+          <a class="list-item" href="./09-sso.html">
+            <div class="list-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div class="list-content">
+              <div class="list-title">Microsoft Entra ID</div>
+              <div class="list-sub">Federated login via Azure AD</div>
+            </div>
+            <div class="list-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          </a>
+
+        </div>
+
+        <div class="gap-16"></div>
+
+        <div class="alert info">
+          <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span class="alert-text">If only one method is configured on the backend, this screen is skipped automatically.</span>
+        </div>
+
+      </div>
+      <div class="bottom-safe"></div>
+    </div>
+  </div>
+
+  <aside class="screen-notes">
+    <div class="notes-card">
+      <div class="notes-card-title">Shared path — step 2 of 4</div>
+      <ul class="notes-list">
+        <li>Shown only when the backend has more than one auth method configured for this tenant.</li>
+        <li>Tenant + gateway context chip is static — user cannot navigate away from it accidentally.</li>
+        <li>Auto-skip avoids unnecessary friction for tenants with a single method.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Interactions</div>
+      <div class="flow-links">
+        <a href="./08-credentials.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/></svg>
+          <span class="flow-link-label">Username &amp; Password → Credentials</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="./09-sso.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="flow-link-label">SSO / Entra ID → IDP Redirect</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="./06-tenant.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="flow-link-label">Back → Select Workspace</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Design notes</div>
+      <ul class="notes-list">
+        <li>Context chip is <code>.static</code> — <code>pointer-events: none</code>. Prevents accidental navigation to URL entry.</li>
+        <li>Auth methods are rendered from the backend response — the list is dynamic.</li>
+        <li>Icon colours distinguish method categories: teal = Doxis-native, purple = SSO generic, green = federated/enterprise.</li>
+      </ul>
+    </div>
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>
