@@ -1,1 +1,5 @@
 .DS_Store
+node_modules/
+screens-export/
+package-lock.json
+.claude/settings.local.json

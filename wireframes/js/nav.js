@@ -88,6 +88,13 @@ const SCREENS = [
     title: 'Home Screen',
     group: 'Destination',
     description: 'Authenticated home. Shows confirmation banner, quick actions, recent documents.'
+  },
+  {
+    id: 'accounts',
+    file: '13-accounts.html',
+    title: 'Manage Accounts',
+    group: 'Error Recovery',
+    description: 'Accessed from a login error — switch account, edit credentials, or remove an account for the current org.'
   }
 ];
 

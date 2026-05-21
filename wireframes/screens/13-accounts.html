@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13 · Manage Accounts — Doxis Mobile Wireframes</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/ui.css">
+  <style>
+
+    /* ── Account item ──────────────────────────────────────────────── */
+    .acct-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 4px 12px 14px;   /* right padding reduced — ⋮ btn handles it */
+      background: var(--bg-primary);
+      border: 1px solid var(--border-secondary);
+      border-radius: var(--r-xl);
+      box-shadow: var(--shadow-xs);
+      cursor: pointer;
+      transition: border-color .12s, box-shadow .12s;
+    }
+    .acct-item.selected {
+      border-color: var(--teal-400);
+      box-shadow: var(--focus-ring), var(--shadow-xs);
+    }
+
+    /* Avatar */
+    .acct-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: var(--fw-bold);
+      font-size: var(--text-sm);
+      flex-shrink: 0;
+    }
+    .acct-avatar.teal   { background: var(--bg-brand-primary); color: var(--teal-700); }
+    .acct-avatar.gray   { background: var(--bg-secondary); color: var(--text-tertiary); border: 1px solid var(--border-secondary); }
+    .acct-avatar.purple { background: #ede9fe; color: #6d28d9; }
+
+    /* Text block */
+    .acct-body { flex: 1; min-width: 0; }
+    .acct-name {
+      font-size: var(--text-sm);
+      font-weight: var(--fw-semibold);
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .acct-username { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Default checkmark badge */
+    .check-badge {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--teal-600);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-badge svg { width: 10px; height: 10px; color: #fff; }
+
+    /* ── ⋮ More button — single 44×44px tap target ─────────────────── */
+    .acct-more-btn {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: none;
+      border: none;
+      border-radius: var(--r-lg);
+      cursor: pointer;
+      color: var(--text-quaternary);
+      transition: background .1s, color .1s;
+      /* Full 44px touch area — Apple HIG §Layout / Material 3 §Touch targets */
+    }
+    .acct-more-btn:hover { background: var(--bg-secondary); color: var(--text-secondary); }
+    .acct-more-btn svg { width: 18px; height: 18px; }
+
+    /* ── Org context strip ─────────────────────────────────────────── */
+    .org-strip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-secondary);
+      flex-shrink: 0;
+    }
+    .org-strip-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--r-lg);
+      background: var(--bg-brand-primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .org-strip-icon svg { width: 16px; height: 16px; color: var(--teal-600); }
+    .org-strip-name { font-size: var(--text-sm); font-weight: var(--fw-semibold); color: var(--text-primary); }
+    .org-strip-url  { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 1px; }
+
+    /* Add account row */
+    .add-acct-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px;
+      padding: 13px;
+      border-radius: var(--r-xl);
+      border: 1.5px dashed var(--border-primary);
+      background: transparent;
+      font-size: var(--text-sm);
+      font-weight: var(--fw-medium);
+      color: var(--text-tertiary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .12s;
+    }
+    .add-acct-btn:hover { background: var(--bg-secondary); color: var(--text-secondary); border-color: var(--teal-300); }
+    .add-acct-btn svg { width: 14px; height: 14px; }
+
+    /* ── Action sheet rows ─────────────────────────────────────────── */
+    .sheet-action {
+      display: flex; align-items: center; gap: 16px;
+      padding: 15px 4px;
+      width: 100%;
+      background: none; border: none;
+      cursor: pointer;
+      font-size: var(--text-sm);
+      font-weight: var(--fw-medium);
+      color: var(--text-primary);
+      text-align: left;
+      border-radius: var(--r-md);
+      transition: background .1s;
+      /* min touch height 44px naturally achieved by padding */
+    }
+    .sheet-action:hover { background: var(--bg-secondary); margin: 0 -4px; padding: 15px 8px; }
+    .sheet-action svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--text-secondary); }
+    .sheet-action-text { flex: 1; }
+    .sheet-action-label { display: block; font-size: var(--text-sm); font-weight: var(--fw-medium); }
+    .sheet-action-desc  { display: block; font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 1px; }
+    .sheet-action.danger svg { color: #dc2626; }
+    .sheet-action.danger .sheet-action-label { color: #dc2626; }
+
+    .sheet-divider { height: 1px; background: var(--border-secondary); margin: 2px 0; }
+
+    /* Context header in sheet */
+    .sheet-acct-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--border-secondary);
+    }
+
+    /* State toggle tabs */
+    .state-tabs {
+      display: flex; gap: 8px;
+      padding: 12px 16px 0;
+      background: var(--bg-secondary);
+    }
+    .state-tab {
+      flex: 1; padding: 7px 0;
+      font-size: var(--text-xs); font-weight: var(--fw-semibold);
+      text-align: center;
+      border-radius: var(--r-lg);
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: none;
+      color: var(--text-tertiary);
+      transition: all .12s;
+    }
+    .state-tab.active {
+      background: var(--bg-primary);
+      border-color: var(--border-secondary);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-xs);
+    }
+
+  </style>
+</head>
+<body data-screen="accounts">
+
+<header class="page-header">
+  <a href="../index.html" class="page-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All screens
+  </a>
+  <div class="page-title-wrap">
+    <span class="page-screen-title" id="nav-screen-title">Manage Accounts</span>
+    <span class="page-counter" id="nav-counter"></span>
+  </div>
+  <nav class="page-nav">
+    <a id="nav-prev" class="page-nav-btn" href="./12-home.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Prev
+    </a>
+    <a id="nav-next" class="page-nav-btn disabled" href="#">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main class="page-main" style="gap:40px;align-items:flex-start;">
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEVICE A — List state (default)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <div style="font-size:var(--text-xs);font-weight:var(--fw-semibold);color:var(--text-quaternary);text-transform:uppercase;letter-spacing:.06em;">State 1 · Account list</div>
+    <div class="device">
+      <div class="device-screen">
+        <div class="device-notch"></div>
+
+        <div class="status-bar">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+          </div>
+        </div>
+
+        <div class="nav-bar">
+          <a class="nav-back" href="./08-credentials.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+          <span class="nav-title">Accounts</span>
+        </div>
+
+        <!-- Org strip -->
+        <div class="org-strip">
+          <div class="org-strip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="org-strip-name">Acme Corp</div>
+            <div class="org-strip-url">gateway.acme.com</div>
+          </div>
+        </div>
+
+        <!-- Scrollable body -->
+        <div style="flex:1;overflow-y:auto;background:var(--bg-secondary);">
+
+          <!-- Error banner -->
+          <div style="margin:14px 14px 0;">
+            <div class="alert error">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span class="alert-text"><strong>Sign-in failed</strong> for john.smith. Select another account or update your settings.</span>
+            </div>
+          </div>
+
+          <div style="padding:14px 14px 8px;">
+            <div class="section-label">Configured accounts</div>
+          </div>
+
+          <!-- Account list -->
+          <div style="padding:0 14px;display:flex;flex-direction:column;gap:8px;">
+
+            <!-- Account 1 — selected -->
+            <div class="acct-item selected">
+              <div class="acct-avatar teal">JS</div>
+              <div class="acct-body">
+                <div class="acct-name">
+                  John Smith
+                  <div class="check-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+                <div class="acct-username">john.smith · Default</div>
+              </div>
+              <!-- Single ⋮ button — 44×44px tap target -->
+              <button class="acct-more-btn" aria-label="Account options for John Smith">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.75"/><circle cx="12" cy="12" r="1.75"/><circle cx="12" cy="19" r="1.75"/></svg>
+              </button>
+            </div>
+
+            <!-- Account 2 -->
+            <div class="acct-item">
+              <div class="acct-avatar purple">JS</div>
+              <div class="acct-body">
+                <div class="acct-name">J. Smith · Admin</div>
+                <div class="acct-username">j.smith.admin</div>
+              </div>
+              <button class="acct-more-btn" aria-label="Account options for J. Smith Admin">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.75"/><circle cx="12" cy="12" r="1.75"/><circle cx="12" cy="19" r="1.75"/></svg>
+              </button>
+            </div>
+
+            <!-- Account 3 -->
+            <div class="acct-item">
+              <div class="acct-avatar gray">JD</div>
+              <div class="acct-body">
+                <div class="acct-name">Jane Doe</div>
+                <div class="acct-username">jane.doe</div>
+              </div>
+              <button class="acct-more-btn" aria-label="Account options for Jane Doe">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.75"/><circle cx="12" cy="12" r="1.75"/><circle cx="12" cy="19" r="1.75"/></svg>
+              </button>
+            </div>
+
+            <!-- Add account -->
+            <a class="add-acct-btn" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add another account
+            </a>
+
+          </div>
+
+          <div class="gap-16"></div>
+
+          <!-- CTA -->
+          <div style="padding:0 14px;">
+            <a class="btn btn-primary" href="./10-loading.html">
+              Continue as John Smith
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div class="gap-32"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEVICE B — Action sheet state (after tapping ⋮ on John Smith)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <div style="font-size:var(--text-xs);font-weight:var(--fw-semibold);color:var(--text-quaternary);text-transform:uppercase;letter-spacing:.06em;">State 2 · ⋮ tapped on "John Smith"</div>
+    <div class="device">
+      <div class="device-screen" style="position:relative;">
+        <div class="device-notch"></div>
+
+        <div class="status-bar">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s3-3 7-3 7 3 7 3M9 14s1.5-1.5 3-1.5 3 1.5 3 1.5M12 18h.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11h1v4h-1"/></svg>
+          </div>
+        </div>
+
+        <div class="nav-bar">
+          <a class="nav-back" href="./08-credentials.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+          <span class="nav-title">Accounts</span>
+        </div>
+
+        <!-- Org strip (dimmed) -->
+        <div class="org-strip" style="opacity:.4;">
+          <div class="org-strip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="org-strip-name">Acme Corp</div>
+            <div class="org-strip-url">gateway.acme.com</div>
+          </div>
+        </div>
+
+        <!-- Background list (dimmed through scrim) -->
+        <div style="flex:1;overflow:hidden;position:relative;">
+          <!-- Dimmed list content — for visual context only -->
+          <div style="padding:14px;display:flex;flex-direction:column;gap:8px;opacity:.35;background:var(--bg-secondary);height:100%;">
+            <div style="height:52px;background:var(--bg-primary);border-radius:var(--r-xl);border:2px solid var(--teal-400);"></div>
+            <div style="height:52px;background:var(--bg-primary);border-radius:var(--r-xl);border:1px solid var(--border-secondary);"></div>
+            <div style="height:52px;background:var(--bg-primary);border-radius:var(--r-xl);border:1px solid var(--border-secondary);"></div>
+          </div>
+
+          <!-- Scrim -->
+          <div style="position:absolute;inset:0;background:rgba(15,18,28,.5);"></div>
+
+          <!-- Action sheet -->
+          <div style="position:absolute;bottom:0;left:0;right:0;background:var(--bg-primary);border-radius:20px 20px 0 0;padding:8px 20px 32px;">
+
+            <!-- Handle -->
+            <div style="width:36px;height:4px;background:var(--border-primary);border-radius:2px;margin:8px auto 20px;"></div>
+
+            <!-- Account context -->
+            <div class="sheet-acct-header">
+              <div class="acct-avatar teal" style="width:44px;height:44px;font-size:var(--text-md);">JS</div>
+              <div>
+                <div style="font-size:var(--text-sm);font-weight:var(--fw-semibold);color:var(--text-primary);">John Smith</div>
+                <div style="font-size:var(--text-xs);color:var(--text-tertiary);margin-top:2px;">john.smith · Acme Corp</div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div style="display:flex;flex-direction:column;">
+
+              <button class="sheet-action">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                <div class="sheet-action-text">
+                  <span class="sheet-action-label">Edit account</span>
+                  <span class="sheet-action-desc">Update username, password or settings</span>
+                </div>
+              </button>
+
+              <div class="sheet-divider"></div>
+
+              <button class="sheet-action danger">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                <div class="sheet-action-text">
+                  <span class="sheet-action-label">Remove account</span>
+                  <span class="sheet-action-desc" style="color:#fca5a5;">This only removes local settings</span>
+                </div>
+              </button>
+
+            </div>
+
+            <div style="height:16px;"></div>
+
+            <!-- Cancel -->
+            <button class="btn btn-ghost" style="width:100%;font-weight:var(--fw-semibold);">Cancel</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       NOTES
+       ═══════════════════════════════════════════════════════════════════ -->
+  <aside class="screen-notes">
+
+    <div class="notes-card">
+      <div class="notes-card-title">Why ⋮ instead of inline buttons</div>
+      <ul class="notes-list">
+        <li>Previous design: two 30×30px buttons with 4px gap — well below the 44px minimum touch target (Apple HIG §Layout, Material 3 §Touch targets).</li>
+        <li>Single ⋮ button is 44×44px — comfortable for all finger sizes, including accessibility users.</li>
+        <li>Scales to any number of future actions (set as default, copy credentials, share…) without changing the row layout.</li>
+        <li>Labeled actions in the sheet are far more readable than icon-only buttons, especially for new users.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Interactions</div>
+      <div class="flow-links">
+        <a href="./10-loading.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <span class="flow-link-label">Tap account row body → sign in with that account</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="#" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+          <span class="flow-link-label">Tap ⋮ → action sheet slides up</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="#" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14"/></svg>
+          <span class="flow-link-label">Edit account → account details form</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="#" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/></svg>
+          <span class="flow-link-label">Remove account → confirmation sheet</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="#" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="flow-link-label">Cancel / tap scrim → dismiss sheet</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+        <a href="./10-loading.html" class="flow-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <span class="flow-link-label">Continue CTA → Signing In…</span>
+          <span class="flow-link-dir">tap</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Action sheet rules</div>
+      <ul class="notes-list">
+        <li>Sheet always opens with the account's name and username as a context header — user always knows which account they're acting on.</li>
+        <li><strong>Edit</strong> has a supporting subtitle ("Update username, password or settings") — reduces hesitation.</li>
+        <li><strong>Remove</strong> is red but also clarifies it only removes local config, not the server account — prevents panic.</li>
+        <li>Remove leads to a <em>second</em> confirmation sheet before any data is deleted — two-step destructive action.</li>
+        <li>Cancel button is always last, full width, ghost style — clearly the safe exit.</li>
+        <li>Tapping the scrim (outside the sheet) also dismisses — standard mobile behaviour.</li>
+      </ul>
+    </div>
+
+    <div class="notes-card">
+      <div class="notes-card-title">Other states</div>
+      <ul class="notes-list">
+        <li><strong>Loading:</strong> tapping the row body routes to screen 10 with the chosen account context replacing "john.smith."</li>
+        <li><strong>Empty state:</strong> hide list + CTA; show centred message + "Add account" primary button.</li>
+        <li><strong>Delete confirmation:</strong> a second sheet — "Are you sure? This will remove John Smith from this device." + red "Remove" CTA + Cancel.</li>
+      </ul>
+    </div>
+
+  </aside>
+
+</main>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>
